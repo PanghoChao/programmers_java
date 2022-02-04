@@ -29,24 +29,12 @@ class Solution8
     {
 
     	int answer = 0;
-    	ArrayList<Integer> listA = new ArrayList<>(Arrays.stream(A).boxed().collect(Collectors.toList()));
-    	ArrayList<Integer> listB = new ArrayList<>(Arrays.stream(B).boxed().collect(Collectors.toList()));
-    	while(listA.size() != 0){
-	    	int MaxA= Collections.max(listA);
-	    	int MinB= Collections.min(listB);
-	    	
-
-	        answer += (MaxA *MinB);
-			int indexA = listA.indexOf(MaxA);
-			int indexB = listB.indexOf(MinB);
-			
-			listA.remove(indexA);
-			listB.remove(indexB);
-//	        listA.remove(listA.indexOf(MaxA));
-//	        listB.remove(listA.indexOf(MinB));	     
-
+    	Arrays.sort(A);
+    	Arrays.sort(B);
+    	int indexB = B.length - 1;
+    	for(int i = 0 ; i < A.length; i++) {
+    		 answer += A[i] * B[indexB- i];
     	}
-
         return answer;
     }
 }
